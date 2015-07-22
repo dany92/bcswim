@@ -1,6 +1,5 @@
 class FeedbacksController < ApplicationController
   def index
-  	render "This is BC Swim team"
   	@feedbacks=Feedback.all
   end
 
