@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   post 'feedbacks' => 'feedbacks#create'
   get 'feedbacks/index'
   get 'feedbacks/show'
+  get '/login' => 'sessions#new'
   get 'signup' => 'users#new'
+  post 'login' => 'sessions#create'
   resources :users
 
   # Example of regular route:
