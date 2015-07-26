@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'feedbacks/show'
   get '/login' => 'sessions#new'
   get 'signup' => 'users#new'
+  get 'manage_account' => 'users#index'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
   resources :users

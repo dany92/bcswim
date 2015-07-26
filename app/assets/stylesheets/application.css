@@ -16,7 +16,7 @@
 
  html, body {
   background: #fff;
-  font-family: Arial, sans-serif;
+  font-family: Helvetica, sans-serif;
   font-weight: bold;
   margin: 0;
   padding: 0;
@@ -44,12 +44,24 @@
  display: inline;
  margin-left: 30px;
 }
-
+/*
 .header img {
   margin: 0 20px 0 0;
   height: 80px;
   width: 80px;
 }
+*/
+.style_image{
+  margin: 0 20px 0 0;
+  height: 80px;
+  width: 80px;
+}
+.gold_logo{
+  margin: 0 20px 0 0;
+  height: 50px;
+  width: 170px;
+}
+
 .header a {
   color: #000;
   font-size: 20px;  
@@ -57,12 +69,22 @@
 }
 
 .header a:hover {
-  color: #c91717;
+  color: #8C2633;
   text-decoration: none;   
 }
 
-/* ALBUMS */
+.style_image {
+  
+}
 
+/* ALBUMS */
+.user{
+  display: block;
+  float: left;
+  margin: 0 10px 80px 0;
+  margin-bottom: 80px;
+  width: 184px;
+}
 .album-info {
   padding: 12px 24px 24px;
   background-color: #F1f2f3;
@@ -89,7 +111,7 @@
 }
 
 .item:hover a {
-  color: #c91717;
+  color: #C5B358;
   text-decoration: none;
 }
 
@@ -158,7 +180,7 @@ input[type=password] {
   color: #FFFFFF;
   font-size: 18px;
   text-transform: uppercase;
-  background: #c91717;
+  background: #8C2633;
   padding: 10px 20px;
   border: 0;
   margin-top: 6px;

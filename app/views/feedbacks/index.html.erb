@@ -1,14 +1,18 @@
-<h1>Listing Books</h1>
+<h1>Welcome to BC Swim Team</h1>
  
 <table>
   <tr>
-    <th>Title</th>
-    <th>Summary</th>
+    <th></th>
+    <th></th>
     <th></th>
     <th></th>
     <th></th>
   </tr>
- 
+
+ <ul> 
+    <li><%= link_to "Manage Accounts", 'manage_account' %></a></li> 
+  </ul> 
+
 <% @feedbacks.each do |f| %>
   <tr>
     <td><%= f.feedback %></td>
