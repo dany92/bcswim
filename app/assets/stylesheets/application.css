@@ -51,15 +51,19 @@
   width: 80px;
 }
 */
+.varsity_logo{
+  height: 50px;
+  width: 200px;
+}
 .style_image{
   margin: 0 20px 0 0;
   height: 80px;
   width: 80px;
 }
 .gold_logo{
-  margin: 0 20px 0 0;
+  margin: 0 10px 0 0;
   height: 50px;
-  width: 170px;
+  width: 130px;
 }
 
 .header a {

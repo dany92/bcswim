@@ -4,8 +4,8 @@
   <head>
     <link href="http://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,300' rel='stylesheet' type='text/css'>
-    
-    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+
+        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
@@ -14,8 +14,9 @@
     <div class="header">
       <div class="container">
         <%= link_to root_path do %>
-        <%=image_tag("boston-college-logo.jpg", alt: "BC Seal", :class => "style_image")%>
+        <%=image_tag("eagle_logo.jpg", alt: "BC Seal", :class => "style_image")%>
         <%=image_tag("logo_gold_2.png", alt: "BC Logo", :class => "gold_logo")%>
+        <%=image_tag("varsity_swim.png", alt: "Varsity Swim", :class => "varsity_logo")%>
         <% end %>
         <div class="nav pull-right">
           <% if current_user %> 
