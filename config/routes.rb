@@ -11,6 +11,9 @@ Rails.application.routes.draw do
   get 'manage_account' => 'users#index'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
+  get 'questions' =>  'questions#index'
+  get '/new_questions' => 'questions#new'
+  post 'questions' => 'questions#create'
   resources :users
 
   # Example of regular route:

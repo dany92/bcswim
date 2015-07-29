@@ -1,0 +1,14 @@
+<h1>Questions</h1>
+
+<div>
+ <% @questions.each do |question| %>
+    <div class="question">
+      <p><%= "Question ID:  #{question.num}" %></p>
+      <p><%= "Question Type: #{question.category}" %></p>
+      <p><%= "Actual Question: #{question.context}" %></p>
+    </div>
+    <% end %>
+</div>
+<div>
+<%= link_to "Create new Questions", 'new_questions' %></a>
+</div>
