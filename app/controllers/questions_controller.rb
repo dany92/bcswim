@@ -10,7 +10,7 @@ class QuestionsController < ApplicationController
 	def create
 		@question = Question.new(question_params)
     	if @question.save
-     		redirect_to 'questions'
+     		redirect_to '/questions'
     	else
      		render '/'
     		flash[:notice] = "Didn't work"

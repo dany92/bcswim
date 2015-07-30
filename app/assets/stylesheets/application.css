@@ -20,7 +20,7 @@
   font-weight: bold;
   margin: 0;
   padding: 0;
-  text-transform: lowercase;
+  /*text-transform: lowercase;*/
 }
 
 .container {
@@ -170,7 +170,7 @@
 
 input[type=text],
 input[type=email],
-input[type=password] {
+input[type=password]{
   color: #666666;
   width: 100%;
   border: 1px solid #E6E6E6;

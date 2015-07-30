@@ -1,12 +1,12 @@
 class Question < ActiveRecord::Base
-=begin
 	before_create :generate_token
  	protected
-
- 	def generate_token
-		new_token = rand(999999999)
-		self.num = new_token
-    end
+=begin
+ 	Use hashing instead later.
+ 	This does not generate a unique value
 =end
+ 	def generate_token
+		self.num=rand(999999)
+    end
 end
 
