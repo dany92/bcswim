@@ -6,10 +6,18 @@
       <p><%= "Question ID:  #{question.num}" %></p>
       <p><%= "Question Type: #{question.category}" %></p>
       <p><%= "Actual Question: #{question.context}" %></p>
+      <%= form_tag destroy_multiple_questions_path, method: :delete do %>   
+   <td class="table-icon">
+     <%= check_box_tag "question_num[]", question.num %>
+   </td>
+<%end%>
+      <br>
       <br>
     </div>
     <% end %>
 </div>
 <div>
 <%= link_to "Create new Questions", 'new_questions' %></a>
+<p><%= submit_tag "Delete selected" %></p>
+<p><%= submit_tag "Edit Checked" %></p>
 </div>

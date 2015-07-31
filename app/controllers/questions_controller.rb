@@ -16,7 +16,30 @@ class QuestionsController < ApplicationController
     		flash[:notice] = "Didn't work"
     	end
 	end
+=begin
+	def destroy_multiple
+ @questions = Question.find(params[:num])
+ @questions.each do |question|
+ question.destroy
+ end
+end
+=end
+def destroy
+    @question = current_user.question.find(params[:num])
+    @question.destroy
 
+    respond_to do |format|
+     format.html { redirect_to 'questions' }
+     format.json { head :no_content }
+    end
+  end    
+
+def destroy_multiple
+	@questions = Question.find(params[:num])
+	@questions.each do |question|
+		question.destroy
+	end
+end
 	private 
 	def question_params
       params.require(:question).permit(:num, :context, :category)

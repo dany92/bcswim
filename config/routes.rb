@@ -14,7 +14,13 @@ Rails.application.routes.draw do
   get '/questions' =>  'questions#index'
   get '/new_questions' => 'questions#new'
   post 'questions' => 'questions#create'
-  resources :users
+  resources :users, :feedbacks
+  
+  resources :questions do
+  collection do
+    delete 'destroy_multiple'
+  end
+end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
