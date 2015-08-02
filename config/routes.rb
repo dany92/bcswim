@@ -15,12 +15,12 @@ Rails.application.routes.draw do
   get '/new_questions' => 'questions#new'
   post 'questions' => 'questions#create'
   resources :users, :feedbacks
-  
+
   resources :questions do
-  collection do
-    delete 'destroy_multiple'
+    collection do
+      delete 'destroy_multiple' 
+    end
   end
-end
 
   # Example of regular route:
   #   get 'products/:id' => 'catalog#view'
