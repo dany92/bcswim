@@ -1,9 +1,8 @@
 <h1>Questions</h1>
 
 <div>
- <% @questions.each do |question| %>
- 
- <%= form_tag destroy_multiple_questions_path, method: :delete do %>   
+<%= form_tag destroy_multiple_questions_path, method: :delete do %>
+ <% @questions.each do |question| %> 
   
     <div class="question">
     
@@ -11,15 +10,15 @@
       <p><%= "Question Type: #{question.category}" %></p>
       <p><%= "Actual Question: #{question.context}" %></p>
       <%= check_box_tag "questions[]", question.id %>
-      <p><%= submit_tag "Delete selected" %></p>
+       <p><%= submit_tag "Delete selected" %></p>
       <% end %>
       <br>
       <br>
     </div>
     <% end %>
 </div>
+
 <div>
 <%= link_to "Create new Questions", 'new_questions' %></a>
-
 <p><%= submit_tag "Edit Checked" %></p>
 </div>
