@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get 'surveys/index'
+
+  get 'surveys/new'
+
   root 'feedbacks#index'
   get 'feedbacks' => 'feedbacks#index'
   get 'feedbacks/new' => 'feedbacks#new'
@@ -14,7 +18,7 @@ Rails.application.routes.draw do
   get '/questions' =>  'questions#index'
   get '/new_questions' => 'questions#new'
   post 'questions' => 'questions#create'
-  resources :users, :feedbacks
+  resources :users, :feedbacks, :surveys
 
   resources :questions do
     collection do

@@ -1,0 +1,11 @@
+
+<%= fields_for :questions do |builder| %>
+
+<!-- should be in form.html but just to show. Please delete later -->
+	<fieldset>
+		<%= builder.label :context, "Question" %> <br />
+		<%= builder.text_area :context %> <br />
+		<%= builder.check_box :_destroy %>
+		<%= builder.label :_destroy, "Remove Question" %>
+	</fieldset>
+<% end %>
