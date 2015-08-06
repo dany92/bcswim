@@ -4,6 +4,7 @@ class SurveysController < ApplicationController
   end
 
   def new
+  	@survey=Survey.new
   end
 
   def surveys_params

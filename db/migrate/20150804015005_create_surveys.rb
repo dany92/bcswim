@@ -5,6 +5,7 @@ class CreateSurveys < ActiveRecord::Migration
       t.date :date
 
       t.timestamps null: false
+      change_column(:survey, :date, :string)
     end
   end
 end

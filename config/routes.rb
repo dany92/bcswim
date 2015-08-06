@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   get 'surveys/new'
 
-  root 'feedbacks#index'
+  root 'users#home'
   get 'feedbacks' => 'feedbacks#index'
   get 'feedbacks/new' => 'feedbacks#new'
   get 'feedbacks/:id' => 'feedbacks#show', as: :feedback
@@ -18,6 +18,7 @@ Rails.application.routes.draw do
   get '/questions' =>  'questions#index'
   get '/new_questions' => 'questions#new'
   post 'questions' => 'questions#create'
+  get 'surveys/_form'=> 'survey#new'
   resources :users, :feedbacks, :surveys
 
   resources :questions do
