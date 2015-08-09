@@ -1,3 +1,23 @@
 <h1>Surveys#index</h1>
 <!-- should be in form.html but just to show. Please delete later -->
+<div>
+<%= form_tag destroy_multiple_surveys_path, method: :delete do %>
+ <% @surveys.each do |survey| %> 
+    <div class="survey">
+    
+      <p><%= "Survey Title: #{survey.title}" %></p>
+      <p><%= "Survey Date: #{survey.date}" %></p> 
+      <p><%= submit_tag "Delete selected" %></p>
+      <p><%= check_box_tag "survey[]", survey.id %></p>
+      <% end %>
+      <br>
+      <br>
+    </div>
+    <% end %>
+
+</div>
+
+<div>
 <%= link_to "Create Survey", 'surveys/new' %>
+<p><%= submit_tag "Edit Checked" %></p>
+</div>

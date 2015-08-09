@@ -19,9 +19,9 @@ Rails.application.routes.draw do
   get '/new_questions' => 'questions#new'
   post 'questions' => 'questions#create'
   get 'surveys/_form'=> 'survey#new'
-  resources :users, :feedbacks, :surveys
+  resources :users, :feedbacks
 
-  resources :questions do
+  resources :questions, :surveys do
     collection do
       delete 'destroy_multiple' 
     end

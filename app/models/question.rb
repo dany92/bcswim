@@ -5,6 +5,7 @@ class Question < ActiveRecord::Base
  	Use hashing instead later.
  	This does not generate a unique value
 =end
+	has_and_belongs_to_many :surveys
  	def generate_token
 		self.num=rand(999999)
     end

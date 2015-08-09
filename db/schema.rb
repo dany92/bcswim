@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150804015005) do
+ActiveRecord::Schema.define(version: 20150809030814) do
 
   create_table "feedbacks", force: :cascade do |t|
     t.integer  "response_id"
@@ -30,12 +30,29 @@ ActiveRecord::Schema.define(version: 20150804015005) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "questions_surveys", force: :cascade do |t|
+    t.integer "survey_id"
+    t.integer "question_id"
+  end
+
+  add_index "questions_surveys", ["survey_id", "question_id"], name: "index_questions_surveys_on_survey_id_and_question_id"
+
   create_table "surveys", force: :cascade do |t|
     t.string   "title"
     t.date     "date"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "surveys_questions", force: :cascade do |t|
+    t.integer  "survey_id"
+    t.integer  "question_id"
+    t.string   "category"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "surveys_questions", ["survey_id", "question_id"], name: "index_surveys_questions_on_survey_id_and_question_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "first_name"
