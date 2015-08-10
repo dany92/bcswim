@@ -5,8 +5,9 @@
     <link href="http://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css" rel="stylesheet" />
     <link href='http://fonts.googleapis.com/css?family=Roboto:400,500,300' rel='stylesheet' type='text/css'>
 
-        <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+    <!--changed 'application' to 'defaults' -->
+    <%= javascript_include_tag 'dafaults', 'data-turbolinks-track' => true %>
     <%= csrf_meta_tags %>
   </head>
   <body>

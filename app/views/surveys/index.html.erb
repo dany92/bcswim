@@ -8,6 +8,9 @@
       <p><%= "Survey Title: #{survey.title}" %></p>
       <p><%= "Survey Date: #{survey.date}" %></p> 
       <p><%= submit_tag "Delete selected" %></p>
+      <% @questions.each do |question| %> 
+      <p><%= "Question: #{question.context}" %></p>
+      <% end %>
       <p><%= check_box_tag "survey[]", survey.id %></p>
       <% end %>
       <br>

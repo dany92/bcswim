@@ -1,10 +1,11 @@
 <%= form_for (@survey) do |f| %>
 <%=f.text_field :title, :placeholder => "Title"%>
-<%=f.text_field :date %>
+<%=f.text_field :date, :placeholder => "Date" %>
+<%= f.select :category, options_for_select([ "Game", "Normal Workout" ]), :onchange => "reset_form(this.id,'page_type_msg');" %>
 <%= fields_for :questions do |builder| %>
 	<fieldset>
 		<%= builder.label :questions %><br />
-		<%= select_tag "Questions", options_from_collection_for_select(Question.all, 'id', 'context',@survey.questions.map{ |j| j.id }), :multiple => true %><br />
+		<%= builder.select "Questions", options_from_collection_for_select(Question.all, 'id', 'context',@survey.questions.map{ |j| j.id }), :multiple => true %><br />
 		<%= builder.check_box :_destroy %>
 		<%= builder.label :_destroy, "Remove Question" %><br />
 	</fieldset>
