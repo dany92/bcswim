@@ -1,4 +1,4 @@
-<h1>Surveys#index</h1>
+<h1>Surveys</h1>
 <!-- should be in form.html but just to show. Please delete later -->
 <div>
 <%= form_tag destroy_multiple_surveys_path, method: :delete do %>
@@ -7,11 +7,11 @@
     
       <p><%= "Survey Title: #{survey.title}" %></p>
       <p><%= "Survey Date: #{survey.date}" %></p> 
-      <p><%= submit_tag "Delete selected" %></p>
       <% @questions.each do |question| %> 
       <p><%= "Question: #{question.context}" %></p>
       <% end %>
-      <p><%= check_box_tag "survey[]", survey.id %></p>
+      <p><%= check_box_tag "surveys[]", survey.id %></p>
+      <p><%= submit_tag "Delete selected" %></p>
       <% end %>
       <br>
       <br>
