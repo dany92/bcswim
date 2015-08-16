@@ -1,7 +1,6 @@
 class SurveysController < ApplicationController
   def index
   	@surveys=Survey.all
-  	@questions=Question.all
   end
 
   def new
@@ -20,6 +19,12 @@ class SurveysController < ApplicationController
   		render'/'
   	end
   end
+
+  def show
+    @survey = Survey.find(params[:id])
+    @questions=Question.all
+  end
+
 
   def destroy_multiple
 
