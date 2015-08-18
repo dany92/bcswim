@@ -1,9 +1,8 @@
 class CreateQuestionsSurveys < ActiveRecord::Migration
   def change
-    create_table :questions_surveys do |t|
-		t.integer :survey_id
-  		t.integer :question_id
+    create_table :questions_surveys, :id => false do |t|
+		t.references :survey, :null => false
+  		t.references :question, :null => false
   	end
-  	add_index :questions_surveys, [:survey_id, :question_id]
     end
   end

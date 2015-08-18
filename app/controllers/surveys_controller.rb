@@ -22,7 +22,7 @@ class SurveysController < ApplicationController
 
   def show
     @survey = Survey.find(params[:id])
-    @questions=Question.all
+    @questions=@survey.questions
   end
 
 

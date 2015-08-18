@@ -31,7 +31,7 @@ end
 
 	private 
 	def question_params
-    params.require(:question).permit(:num, :context, :category, surveys_attributes: [:id])
+    params.require(:question).permit(:num, :context, :category)
     end
 
 end

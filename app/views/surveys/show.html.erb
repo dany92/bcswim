@@ -4,8 +4,8 @@
     <div class="survey">
     
       <p><%= "Survey Title: #{@survey.title}" %></p>
-      <p><%= "Survey Date: #{@survey.date}" %></p> 
-      <% @survey.questions.each do |question| %> 
+      <p><%= "Survey Date: #{@survey.date}" %></p>
+      <% @questions.each do |question| %> 
       <p><%= "Question: #{question.context}" %></p>
       <% end %>
       <br>

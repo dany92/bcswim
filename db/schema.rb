@@ -30,12 +30,10 @@ ActiveRecord::Schema.define(version: 20150809030814) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "questions_surveys", force: :cascade do |t|
-    t.integer "survey_id"
-    t.integer "question_id"
+  create_table "questions_surveys", id: false, force: :cascade do |t|
+    t.integer "survey_id",   null: false
+    t.integer "question_id", null: false
   end
-
-  add_index "questions_surveys", ["survey_id", "question_id"], name: "index_questions_surveys_on_survey_id_and_question_id"
 
   create_table "surveys", force: :cascade do |t|
     t.string   "title"
