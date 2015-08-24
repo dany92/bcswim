@@ -5,8 +5,8 @@
     
       <p><%= "Survey Title: #{@survey.title}" %></p>
       <p><%= "Survey Date: #{@survey.date}" %></p>
-      <% @questions.each do |question| %> 
-      <p><%= "Question: #{question.context}" %></p>
+      <p><%= @surveyquestions.each do |sq| %></p>
+      <p><%= @questions.find(sq).context %> </p>
       <% end %>
       <br>
       <br>

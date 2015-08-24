@@ -1,5 +1,6 @@
 class Question < ActiveRecord::Base
-	has_and_belongs_to_many :surveys
+	has_many :question_surveys
+	has_many :surveys, through: :question_surveys
 	before_create :generate_token
  	protected
 =begin

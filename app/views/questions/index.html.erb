@@ -6,7 +6,7 @@
   
     <div class="question">
     
-      <p><%= "Question ID:  #{question.num}" %></p>
+      <p><%= "Question ID:  #{question.id}" %></p>
       <p><%= "Question Type: #{question.category}" %></p>
       <p><%= "Actual Question: #{question.context}" %></p>
       <%= check_box_tag "questions[]", question.id %>

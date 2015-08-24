@@ -5,12 +5,13 @@ class SurveysController < ApplicationController
 
   def new
   	@survey=Survey.new
+    #@survey.questions.new
+    @questions=Question.all
   end
 
   def create
   	@survey=Survey.new(survey_params)
-    @questions= Question.where(:id => params[:questions_on_survey])
-    @survey.questions << @questions
+    @survey.question_surveys.build(:question_id => '2', :survey_id => @survey.id) 
   	if @survey.save
   		flash[:success]="Survey Created"
   		redirect_to '/surveys'
@@ -22,7 +23,14 @@ class SurveysController < ApplicationController
 
   def show
     @survey = Survey.find(params[:id])
-    @questions=@survey.questions
+    @survey_questions=QuestionSurvey.where(:survey => @survey)
+    @surveyquestions=[]
+    @survey_questions.each do |sq|
+      @surveyquestions << sq.question_id
+    end
+    @questions=Question.all
+
+
   end
 
 
@@ -37,6 +45,6 @@ class SurveysController < ApplicationController
   end
 
   def survey_params
-  	params.require(:survey).permit(:title, :date, questions_attributes: [:id,:_destroy, :category, :context])
+  	params.require(:survey).permit(:id, :title, :date, :category, questions_attributes: [:id, :context], question_surveys_attributes: [:survey_id, :question_id])
   end
 end
