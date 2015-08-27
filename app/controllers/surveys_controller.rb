@@ -11,7 +11,8 @@ class SurveysController < ApplicationController
 
   def create
   	@survey=Survey.new(survey_params)
-    @survey.question_surveys.build(:question_id => '2', :survey_id => @survey.id) 
+    @survey.question_surveys.build(:question_id => (params[:question][:question_id]), :survey_id => @survey.id) 
+    #@survey.question_surveys.build(:question_id => '2', :survey_id => @survey.id) 
   	if @survey.save
   		flash[:success]="Survey Created"
   		redirect_to '/surveys'
@@ -45,6 +46,6 @@ class SurveysController < ApplicationController
   end
 
   def survey_params
-  	params.require(:survey).permit(:id, :title, :date, :category, questions_attributes: [:id, :context], question_surveys_attributes: [:survey_id, :question_id])
+  	params.require(:survey).permit(:id, :title, :date, :category, :question_id, questions_attributes: [:id, :context], question_surveys_attributes: [:survey_id, :question_id])
   end
 end
