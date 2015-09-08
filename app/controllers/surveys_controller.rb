@@ -11,8 +11,11 @@ class SurveysController < ApplicationController
 
   def create
   	@survey=Survey.new(survey_params)
-    @survey.question_surveys.build(:question_id => (params[:question][:question_id]), :survey_id => @survey.id) 
-    #@survey.question_surveys.build(:question_id => '2', :survey_id => @survey.id) 
+    @questionson=params[:question][:question_id]
+    for q in @questionson
+      @survey.question_surveys.build(:question_id => q, :survey_id => @survey.id) 
+    end
+    #@survey.question_surveys.build(:question_id => (params[:question][:question_id]), :survey_id => @survey.id) 
   	if @survey.save
   		flash[:success]="Survey Created"
   		redirect_to '/surveys'
@@ -30,8 +33,6 @@ class SurveysController < ApplicationController
       @surveyquestions << sq.question_id
     end
     @questions=Question.all
-
-
   end
 
 

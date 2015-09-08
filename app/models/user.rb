@@ -7,6 +7,4 @@ class User < ActiveRecord::Base
 		self.role =='admin'
 	end
 
-	has_many :feedback
-
 end

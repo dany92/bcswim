@@ -4,12 +4,6 @@ Rails.application.routes.draw do
   get 'surveys/new'
 
   root 'users#home'
-  get 'feedbacks' => 'feedbacks#index'
-  get 'feedbacks/new' => 'feedbacks#new'
-  get 'feedbacks/:id' => 'feedbacks#show', as: :feedback
-  post 'feedbacks' => 'feedbacks#create'
-  get 'feedbacks/index'
-  get 'feedbacks/show'
   get '/login' => 'sessions#new'
   get 'signup' => 'users#new'
   get 'manage_account' => 'users#index'
@@ -19,7 +13,7 @@ Rails.application.routes.draw do
   get '/new_questions' => 'questions#new'
   post 'questions' => 'questions#create'
   get 'surveys/_form'=> 'survey#new'
-  resources :users, :feedbacks
+  resources :users
 
   resources :questions, :surveys do
     collection do
