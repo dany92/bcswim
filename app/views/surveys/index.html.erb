@@ -8,6 +8,7 @@
       <p><%= "Survey Title: #{survey.title}" %></p>
       <p><%= "Survey Date: #{survey.date}" %></p>
       <%= link_to(survey.id, survey_path(survey)) %>
+      <%= link_to("Respond", respond_survey_path(survey)) %>
       <p><%= check_box_tag "surveys[]", survey.id %></p>
       <p><%= submit_tag "Delete selected" %></p>
       <% end %>

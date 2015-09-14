@@ -35,6 +35,34 @@ class SurveysController < ApplicationController
     @questions=Question.all
   end
 
+  def respond
+    @response=Response.new
+    @survey=Survey.find(params[:id])
+    @survey_questions=QuestionSurvey.where(:survey => @survey)
+    @surveyquestions=[]
+    @response=params[:response]
+    @survey_questions.each do |sq|
+      @surveyquestions << sq.question_id
+    end
+    @questions=Question.all
+    
+  end
+
+
+def submitReponse
+    @survey=Survey.find(params[:id])
+    @survey_questions=QuestionSurvey.where(:survey => @survey)
+    @surveyquestions=[]
+    @survey_questions.each do |sq|
+      @surveyquestions << sq.question_id
+    end
+    @questions=Question.all
+    @surveysize=@surveyquestions.length-1
+    for i in 0..@surveysize
+      @response.build(:question_id => @surveyquestions[i], :survey_id => @survey.id, :content => @responses[i])
+    end
+
+end
 
   def destroy_multiple
 
@@ -47,6 +75,6 @@ class SurveysController < ApplicationController
   end
 
   def survey_params
-  	params.require(:survey).permit(:id, :title, :date, :category, :question_id, questions_attributes: [:id, :context], question_surveys_attributes: [:survey_id, :question_id])
+  	params.require(:survey).permit(:id, :title, :date, :category, :response, :question_id, questions_attributes: [:id, :context], question_surveys_attributes: [:survey_id, :question_id], responses_attributes: [:survey_id, :question_id, :content])
   end
 end
