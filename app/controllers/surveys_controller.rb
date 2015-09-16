@@ -50,16 +50,24 @@ class SurveysController < ApplicationController
 
 
 def submitReponse
+    @response=Response.new
     @survey=Survey.find(params[:id])
+    @questions=Question.all
     @survey_questions=QuestionSurvey.where(:survey => @survey)
     @surveyquestions=[]
     @survey_questions.each do |sq|
       @surveyquestions << sq.question_id
     end
-    @questions=Question.all
     @surveysize=@surveyquestions.length-1
     for i in 0..@surveysize
       @response.build(:question_id => @surveyquestions[i], :survey_id => @survey.id, :content => @responses[i])
+    end
+    if @response.save
+      flash[:success]="Responses Created"
+      redirect_to '/surveys'
+    else
+      flash.now[:error]="Please try again"
+      render'/'
     end
 
 end
