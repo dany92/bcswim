@@ -25,7 +25,7 @@ Rails.application.routes.draw do
     end
     member do
       get 'respond'
-      post 'submitResponse'
+      post 'submitResponse' => 'surveys#submitReponse'
     end
   end
 end

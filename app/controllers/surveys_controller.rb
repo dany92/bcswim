@@ -50,17 +50,15 @@ class SurveysController < ApplicationController
 
 
 def submitReponse
-    @response=Response.new
-    @survey=Survey.find(params[:id])
-    @questions=Question.all
-    @survey_questions=QuestionSurvey.where(:survey => @survey)
-    @surveyquestions=[]
-    @survey_questions.each do |sq|
-      @surveyquestions << sq.question_id
-    end
-    @surveysize=@surveyquestions.length-1
-    for i in 0..@surveysize
-      @response.build(:question_id => @surveyquestions[i], :survey_id => @survey.id, :content => @responses[i])
+    @responses=params[:response][:responses]
+    @questions=params[:response][:question_id]
+    @survey=Survey.find(params[:id])   
+    for i in 0...@responses.size
+      @response=Response.new
+      @response.question_id=@questions[i]
+      @response.survey_id=@survey.id
+      @response.content=@responses[i]
+      @response.save
     end
     if @response.save
       flash[:success]="Responses Created"
@@ -69,7 +67,6 @@ def submitReponse
       flash.now[:error]="Please try again"
       render'/'
     end
-
 end
 
   def destroy_multiple
@@ -83,6 +80,6 @@ end
   end
 
   def survey_params
-  	params.require(:survey).permit(:id, :title, :date, :category, :response, :question_id, questions_attributes: [:id, :context], question_surveys_attributes: [:survey_id, :question_id], responses_attributes: [:survey_id, :question_id, :content])
+  	params.require(:survey).permit(:id, :title, :date, :category, :response [], :question_id, questions_attributes: [:id, :context], question_surveys_attributes: [:survey_id, :question_id], responses_attributes: [:survey_id, :question_id, :content])
   end
 end
