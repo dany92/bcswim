@@ -1,15 +1,23 @@
-<h1>Surveys</h1>
-
-<div>
-    <div class="survey">
-    
-      <p><%= "Survey Title: #{@survey.title}" %></p>
-      <p><%= "Survey Date: #{@survey.date}" %></p>
-      <p><%= @surveyquestions.each do |sq| %></p>
-      <p><%= @questions.find(sq).context %> </p>
+<div class="survey">
+      <h2><%= @survey.title %></h2>
+      <h2><%= @survey.date %></h2>
+      <h3>Questions</h3>
+      <table class = "table">
+        <thead>
+          <tr>
+            <th colspan="1">ID</th>
+            <th colspan="1">Content</th>
+          </tr>
+        <thead>
+        <tbody>
+      <%= @surveyquestions.each do |sq| %>
+      <tr>
+        <td> <%= sq %> </td>
+        <td> <%= @questions.find(sq).context %> </td>
+      </tr>
       <% end %>
-      <p><%= @question_new %></p>
+    </tbody>
+  </table>
       <br>
       <br>
-    </div>
-</div>
+  </div>

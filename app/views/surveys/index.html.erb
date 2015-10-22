@@ -1,25 +1,39 @@
-<h1>Surveys</h1>
+<h4>Surveys</h4>
 <!-- should be in form.html but just to show. Please delete later -->
 <div>
+   <%= button_to "New Survey", new_survey_path, :class => "btn btn-primary btn-lg", :method => :get  %>
+  <table class="table">
+    <thead>
+      <tr>
+      <th></th>
+      <th colspan="1">ID</th>
+      <th colspan="1">Title</th>
+      <th colspan="1">Date</th>
+      <th colspan="1">View</th>
+      <th colspan="1">Respond</th>
+      <th colspan="1">Delete</th>
+    </tr>
+  </thead>
+   <tbody>
 <%= form_tag destroy_multiple_surveys_path, method: :delete do %>
  <% @surveys.each do |survey| %> 
-    <div class="survey">
-    
-      <p><%= "Survey Title: #{survey.title}" %></p>
-      <p><%= "Survey Date: #{survey.date}" %></p>
-      <%= link_to(survey.id, survey_path(survey)) %>
-      <%= link_to("Respond", respond_survey_path(survey)) %>
-      <p><%= check_box_tag "surveys[]", survey.id %></p>
-      <p><%= submit_tag "Delete selected" %></p>
-      <% end %>
-      <br>
-      <br>
-    </div>
-    <% end %>
-
+  <tr>
+      <td> <%= check_box_tag "surveys[]", survey.id, false, class: "checkbox" %></td>
+      <td><%= survey.id %></td>    
+      <td><%= survey.title %></td>
+      <td><%= survey.date %></td>
+      <td><%= link_to("View", survey_path(survey), {:class => "btn btn-primary"}) %> </td>
+      <td><%= link_to "Respond", respond_survey_path(survey), {:class => "btn btn-primary"}%></td>
+      <td><%= submit_tag "Delete", name: nil, class: "btn btn-danger" %></td>
+  </tr>
+<% end %>
+<br>
+<br>
+<% end %>
+</tbody>
+</table>
 </div>
 
 <div>
-<%= link_to "Create Survey", 'surveys/new' %>
 <p><%= submit_tag "Edit Checked" %></p>
 </div>

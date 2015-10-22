@@ -9,9 +9,11 @@ Rails.application.routes.draw do
   get 'manage_account' => 'users#index'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  get '/questions' =>  'questions#index'
-  get '/new_questions' => 'questions#new'
-  post 'questions' => 'questions#create'
+  
+#get '/questions' =>  'questions#index'
+#get '/new_questions' => 'questions#new'
+#post 'questions' => 'questions#create'
+  
   get 'surveys/_form'=> 'survey#new'
   resources :users
   resources :questions do

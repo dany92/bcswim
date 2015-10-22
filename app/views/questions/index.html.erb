@@ -1,24 +1,35 @@
-<h1>Questions</h1>
-
+<h4>Questions</h4>
+<div class="new_q">
+  <%= button_to "New Question", new_question_path, :class => "btn btn-primary btn-lg", :method => :get  %>
+</div>
 <div>
+  <table class="table">
+    <thead>
+      <tr>
+      <th></th>
+      <th colspan="1">Question ID</th>
+      <th colspan="1">Question Type</th>
+      <th colspan="1">Content</th>
+      <th colspan="1">Edit</th>
+      <th colspan="1">Delete</th>
+    </tr>
+  </thead>
+  <tbody>
 <%= form_tag destroy_multiple_questions_path, method: :delete do %>
- <% @questions.each do |question| %> 
-  
-    <div class="question">
-    
-      <p><%= "Question ID:  #{question.id}" %></p>
-      <p><%= "Question Type: #{question.category}" %></p>
-      <p><%= "Actual Question: #{question.context}" %></p>
-      <%= check_box_tag "questions[]", question.id %>
-       <p><%= submit_tag "Delete selected" %></p>
+      <% @questions.each do |question| %> 
+      <tr>
+          <td> <%= check_box_tag "questions[]", question.id, false, class: "checkbox" %></td>
+          <td><%= question.id %></td>
+          <td><%= question.category%></td>
+          <td><%= question.context%></td>
+          <td><button type="button" class="btn btn-primary btn-sm">Edit</button></td>
+          <td><%= submit_tag "Delete selected", name: nil, class: "btn btn-danger btn-sm" %></td>
+        </tr>
       <% end %>
       <br>
       <br>
-    </div>
-    <% end %>
-</div>
-
-<div>
-<%= link_to "Create new Questions", 'new_questions' %></a>
-<p><%= submit_tag "Edit Checked" %></p>
+        </div>
+<% end %>
+</tbody>
+</table>
 </div>

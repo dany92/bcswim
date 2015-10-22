@@ -1,13 +1,13 @@
-<%= form_for :response, :url => url_for(:id =>@survey.id, :action => "submitReponse") do |f| %>
+<%= form_for :response, :url => url_for(:id =>@survey.id, :action => "submitReponse"), :html => {:class => "form-horizontal center"} do |f| %>
 
 <div class="survey">
-<p><%=f.label "Survey Title: #{@survey.title}" %></p>
-<p><%=f.label "Survey Date: #{@survey.date}" %></p>
+<%=f.label @survey.title, class: "form-control" %>
+<%=f.label @survey.date, class: "form-control" %>
 <%= @surveyquestions.each do |sq| %>
-	<p><%= f.label @questions.find(sq).context %></p>
+	<%= f.label @questions.find(sq).context, class: "form-control" %>
 	<%= f.hidden_field :question_id, :value => sq, multiple: true %>
-	<p><%= f.text_area :responses, multiple: true %></p>
+	<%= f.text_area :responses, multiple: true, class: "form-control" %>
 <% end %>
-<%= f.submit "Submit", class: "btn-submit" %>
+<%= f.submit "Submit", class: "btn btn-primary" %>
 </div>
 <% end %>

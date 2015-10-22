@@ -80,6 +80,10 @@ end
   end
 
   def survey_params
-  	params.require(:survey).permit(:id, :title, :date, :category, :response [], :question_id, questions_attributes: [:id, :context], question_surveys_attributes: [:survey_id, :question_id], responses_attributes: [:survey_id, :question_id, :content])
+  	params.require(:survey).permit(:id, :title, :date, :category, :question_id, questions_attributes: [:id, :context], question_surveys_attributes: [:survey_id, :question_id])
+  end
+
+  def response_params
+    params.require(:survey).permit(:id, :title, :date, :category, :response [], :question_id, questions_attributes: [:id, :context], question_surveys_attributes: [:survey_id, :question_id], responses_attributes: [:survey_id, :question_id, :content])
   end
 end

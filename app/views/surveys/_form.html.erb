@@ -1,8 +1,10 @@
-<%= form_for (@survey) do |f| %>
-<%=f.text_field :title, :placeholder => "Title"%>
-<%=f.text_field :date, :placeholder => "Date"%>
-<%= f.select :category, options_for_select([ "Swim Match", "Normal Workout" ]), :onchange => "reset_form(this.id,'page_type_msg');" %><br />
+<%= form_for (@survey), :html => {:class => "form-horizontal center"} do |f| %>
+<br />
+<%=f.text_field :title, :placeholder => "Title", class: "form-control", type: "text"%> <br />
+<%=f.text_field :date, :placeholder => "Date", class: "form-control", type: "date"%><br />
+<%= f.select :category, options_for_select([ "Swim Match", "Normal Workout" ]), {:onchange => "reset_form(this.id,'page_type_msg');"},class: "form-control"  %><br />
 
-<%= collection_select(:question, :question_id, @questions, :id, :context, {:include_hidden =>false}, {:multiple => true}) %><br />
-<%= f.submit "Submit", class: "btn-submit" %>
+<%= collection_select(:question, :question_id, @questions, :id, :context, {:include_hidden =>false}, {:multiple => true}) %>
+<br /><br />
+<%= f.submit "Submit", class: "btn btn-primary" %>
 <%end%>

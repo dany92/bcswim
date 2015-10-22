@@ -1,17 +1,1 @@
-<div class="New Question">
-  <div class="container">
-    <div class="form">
-
-    <h1>Create a new Question</h1>
-
-    <%= form_for(@question) do |f| %>
-     <%= f.select :category, options_for_select([ "Game", "Normal Workout" ]) %>
-      <!--<%= f.text_field :category, :placeholder => "Category" %> -->
-      <%= f.text_area :context, :placeholder => "Actual Question" %>
-      <%= f.submit "Create a Question", class: "btn-submit" %>
-    <% end %>
-
-  
-    </div>
-  </div>
-</div>
+<%= render 'form' %>
