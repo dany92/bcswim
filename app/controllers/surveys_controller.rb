@@ -1,11 +1,21 @@
 class SurveysController < ApplicationController
+  before_action :setSurvey, only: [:submitResponse, :respond, :show, :update, :edit]
+  
   def index
   	@surveys=Survey.all
   end
 
   def new
   	@survey=Survey.new
-    #@survey.questions.new
+    @questions=Question.all
+  end
+
+  def edit
+    @survey_questions=QuestionSurvey.where(:survey => @survey)
+    @surveyquestions=[]
+    @survey_questions.each do |sq|
+      @surveyquestions << sq.question_id
+    end
     @questions=Question.all
   end
 
@@ -25,8 +35,23 @@ class SurveysController < ApplicationController
   	end
   end
 
+
+  def update
+    @questionson=params[:question][:question_id]
+    QuestionSurvey.where(:survey => @survey).destroy_all
+    for q in @questionson
+      @survey.question_surveys.build(:question_id => q, :survey_id => @survey.id) 
+    end
+    if @survey.update(survey_params)
+      flash[:notice]="Survey Created"
+      redirect_to '/surveys'
+    else
+      flash.now[:error]="Please try again"
+      render'/'
+    end
+  end
+
   def show
-    @survey = Survey.find(params[:id])
     @survey_questions=QuestionSurvey.where(:survey => @survey)
     @surveyquestions=[]
     @survey_questions.each do |sq|
@@ -37,7 +62,6 @@ class SurveysController < ApplicationController
 
   def respond
     @response=Response.new
-    @survey=Survey.find(params[:id])
     @survey_questions=QuestionSurvey.where(:survey => @survey)
     @surveyquestions=[]
     @response=params[:response]
@@ -48,16 +72,16 @@ class SurveysController < ApplicationController
     
   end
 
-
-def submitReponse
+def submitResponse
     @responses=params[:response][:responses]
-    @questions=params[:response][:question_id]
-    @survey=Survey.find(params[:id])   
+    @questions=params[:response][:question_id]  
     for i in 0...@responses.size
       @response=Response.new
-      @response.question_id=@questions[i]
+      @response.question_id = @questions[i]
+      @response.question = Question.find_by(:id => @questions[i]).context
       @response.survey_id=@survey.id
       @response.content=@responses[i]
+      @response.user_id = current_user.id
       @response.save
     end
     if @response.save
@@ -77,6 +101,13 @@ end
     format.html { redirect_to '/surveys' }
     format.json { head :no_content }
   end
+  end
+
+
+  private
+
+  def setSurvey
+     @survey=Survey.find(params[:id]) 
   end
 
   def survey_params

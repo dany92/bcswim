@@ -15,5 +15,4 @@
 //= require bootstrap-sprockets
 //= require_tree .
 
-
 data-turbolinks-eval=false

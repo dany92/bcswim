@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 	before_action :require_user, only: [:home]
 	def new
-    	@user= User.new
+		@user= User.new
 	end
 
 	def create
@@ -20,7 +20,6 @@ class UsersController < ApplicationController
 	def index
 		@users=User.all
 	end
-
 
 	private
 	def user_params

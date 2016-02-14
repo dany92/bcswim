@@ -22,7 +22,7 @@
           <td><%= question.id %></td>
           <td><%= question.category%></td>
           <td><%= question.context%></td>
-          <td><button type="button" class="btn btn-primary btn-sm">Edit</button></td>
+          <td><%= link_to "Edit", edit_question_path(question), {:class => "btn btn-primary"}%></td>
           <td><%= submit_tag "Delete selected", name: nil, class: "btn btn-danger btn-sm" %></td>
         </tr>
       <% end %>

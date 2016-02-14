@@ -1,0 +1,27 @@
+<h4>Responses</h4>
+<div>
+  <table class="table">
+    <thead>
+      <tr>
+      <th></th>
+      <th colspan="1">Survey ID</th>
+      <th colspan="1">User</th>
+      <th colspan="1">Survey</th>
+      <th colspan= "1">Date </th>
+      <th colspan="1">Question</th>
+      <th colspan="1">Content</th>
+    </tr>
+  </thead>
+   <tbody>
+ <%= @surveys.each do |s| %> 
+  <tr>
+      <td> <%= check_box_tag "responses[]", s.id, false, class: "checkbox" %></td>
+      <td><%= s.id %></td> 
+      <td><%= s.title %></td>
+      <td><%= link_to("View", response_path(s), {:class => "btn btn-primary"}) %> </td>
+      
+  </tr>
+<% end %>
+</tbody>
+</table>
+</div>

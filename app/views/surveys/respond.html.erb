@@ -1,4 +1,4 @@
-<%= form_for :response, :url => url_for(:id =>@survey.id, :action => "submitReponse"), :html => {:class => "form-horizontal center"} do |f| %>
+<%= form_for :response, :url => url_for(:id =>@survey.id, :action => "submitResponse"), :html => {:class => "form-horizontal center"} do |f| %>
 
 <div class="survey">
 <%=f.label @survey.title, class: "form-control" %>

@@ -7,31 +7,56 @@
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </button>
+      <a class="navbar-brand" id="home" href="/">
+        Home
+      </a>
+        
     </div>
 
     <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
      
-      <ul class="nav navbar-nav">
+      <ul class="nav navbar-nav" id = "menu">
         <% if current_user %> 
-        <li class="active"><%= link_to 'Home',root_path %><span class="sr-only">(current)</span></a></li>
-        <li><%= link_to "Manage Accounts", manage_account_path %></a></li>
+
+        <%if current_user.role === 'admin'%>
+          <li class="active"><%= link_to "Manage Accounts" , manage_account_path %></li><span class="sr-only">(current)</span></li>
+        <% end %>
+
         <li><a href="#">Calendar</a></li>
+
+         <% if current_user.role === 'coach' %>
+        <li> <%= link_to "Questions", questions_path %> </li>
+        <% end %>
+        
         <li class="dropdown">
           <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Feedbacks<span class="caret"></span></a>
           <ul class="dropdown-menu">
-            <li><a href="#">Create Survey</a></li>
-            <li><%= link_to 'Create Survey', new_survey_path %></a></li>
+            <li><%= link_to 'All Surveys', surveys_path %></li>
+            
+            <% if current_user.role === 'admin' || current_user.role === 'coach' %>
+            <li><%= link_to 'Create Survey', new_survey_path %></li>
+            <% end %>
+            
             <li role="separator" class="divider"></li>            
-            <li><a href="#">View all</a></li>
+            <li><%= link_to 'View Responses', responses_path %></li>
+
+            <% if current_user.role === 'swimmer' %>
             <li><a href="#">Fill Out</a></li>
+            <% end %>
+          
           </ul>
         </li>
-        <% else %>
-        <ul> 
-        <li class="active"><%= link_to "Login", 'login' %></li>
-        <li class="active"><%= link_to "Signup", 'signup'%></li>
-    
+      
       </ul>
+        <ul class="nav navbar-nav navbar-right" id="logout">
+          <li><%= link_to "Log out", logout_path, :method => :delete %></li>
+        </ul>
+
+        <% else %>
+        <ul class="nav navbar-nav"> 
+          <li><%= link_to "Login", 'login' %></li>
+          <li><%= link_to "Signup", 'signup' %></li>
+        </ul>
       <%end%>
     </div>
 </nav>

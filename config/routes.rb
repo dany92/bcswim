@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   get 'manage_account' => 'users#index'
   post 'login' => 'sessions#create'
   delete 'logout' => 'sessions#destroy'
-  
+
+  resources :responses
 #get '/questions' =>  'questions#index'
 #get '/new_questions' => 'questions#new'
 #post 'questions' => 'questions#create'
-  
   get 'surveys/_form'=> 'survey#new'
   resources :users
   resources :questions do
@@ -27,7 +27,7 @@ Rails.application.routes.draw do
     end
     member do
       get 'respond'
-      post 'submitResponse' => 'surveys#submitReponse'
+      post 'submitResponse' => 'surveys#submitResponse'
     end
   end
 end

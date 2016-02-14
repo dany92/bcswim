@@ -1,0 +1,21 @@
+<%= form_for (@survey), :html => {:class => "form-horizontal center"} do |f| %>
+<br />
+<label for="surveyTitle">Survey Title</label>
+<%=f.text_field :title, class: "form-control", type: "text" , :readonly => true %> <br />
+<label for="surveyDate">Date</label>
+<%=f.text_field :date, class: "form-control", type: "date", :readonly => true %><br />
+
+<label for="userID">User ID: <%= current_user.id %></label> <br><br>
+
+<label for="category">Category</label> <br />
+<%= f.select :category, options_for_select([ "Swim Match", "Normal Workout" ]), {:onchange => "reset_form(this.id,'page_type_msg');"},class: "form-control" , :readonly => true  %><br />
+
+<label for="qANDa">Questions</label> <br />
+<%= f.fields_for :responses, @responses do |r| %>
+	<%= r.text_field :question, class: "form-control", type: "text", :readonly => true %> <br>
+	<%= r.text_field :content, class: "form-control", type: "text" %>
+<br />
+<% end %>
+
+<%= f.submit "Submit", class: "btn btn-primary" %>
+<% end %>
