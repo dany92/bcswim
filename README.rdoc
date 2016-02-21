@@ -1,28 +1,5 @@
-== README
+This is a portal for a college swim team where coaches and swimmers interact.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Coaches post surveys on daily workouts and swim matches in addition to making announcements and sharing important upcoming events. 
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
-
-
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+Students mainly fill out the surveys and check for any updates/announcements from the coaches.
